@@ -42,37 +42,3 @@ kenny.manify(function(err, name) {
   if (err) throw err;
   console.log('Twoje nowe imię to: ' + name);
 });
-
-const benny = new User({
-  name: 'Benny',
-  username: 'Benny_the_boy',
-  password: 'password'
-});
-
-benny.manify(function(err, name) {
-  if (err) throw err;
-  console.log('Twoje nowe imię to: ' + name);
-});
-
-const mark = new User({
-  name: 'Mark',
-  username: 'Mark_the_boy',
-  password: 'password'
-});
-
-mark.manify(function(err, name) {
-  if (err) throw err;
-  console.log('Twoje nowe imię to: ' + name);
-});
-
-const findAllUsers = function() {
-  return User.find({}, function(err, res) {
-    if (err) throw err;
-    console.log('Actual database records are ' + res);
-  });
-};
-
-
-Promise.all([kenny.save(), mark.save(), benny.save()])
-  .then(findAllUsers)
-  .catch(console.log.bind(console));
