@@ -25,22 +25,17 @@ userSchema.methods.manify = function(next) {
 
 //pre-save method
 userSchema.pre('save', function(next) {
-    //pobranie aktualnego czasu
     const currentDate = new Date();
-
-    //zmiana pola na aktualny czas
     this.updated_at = currentDate;
 
-    if (!this.created_at)
+    if (!this.created_at) {
         this.created_at = currentDate;
-
+    }
     next();
 });
 
-//model based on userSchema
 const User = mongoose.model('User', userSchema);
 
-//instancje klasy User
 const kenny = new User({
     name: 'Kenny',
     username: 'Kenny_the_boy',
@@ -50,6 +45,11 @@ const kenny = new User({
 kenny.manify(function(err, name) {
     if (err) throw err;
     console.log('Twoje nowe imię to: ' + name);
+});
+
+kenny.save(function(err) {
+    if (err) throw err;
+    console.log('Uzytkownik ' + kenny.name + ' zapisany pomyslnie');
 });
 
 const benny = new User({
@@ -63,6 +63,11 @@ benny.manify(function(err, name) {
     console.log('Twoje nowe imię to: ' + name);
 });
 
+benny.save(function(err) {
+    if (err) throw err;
+    console.log('Uzytkownik ' + benny.name +  ' zapisany pomyslnie');
+});
+
 const mark = new User({
     name: 'Mark',
     username: 'Mark_the_boy',
@@ -72,6 +77,11 @@ const mark = new User({
 mark.manify(function(err, name) {
     if (err) throw err;
     console.log('Twoje nowe imię to: ' + name);
+});
+
+mark.save(function(err) {
+    if (err) throw err;
+    console.log('Uzytkownik ' + mark.name +  ' zapisany pomyslnie');
 });
 
 const findAllUsers = function() {
@@ -108,7 +118,7 @@ const updadeUserPassword = function() {
 
 const updateUsername = function() {
     // update username
-    return User.findOneAndUpdate({ username: 'Benny_the_boy' }, { username: 'Benny_the_man' }, { new: true }, function(err, user) {
+    return User.findOneAndUpdate({ username: 'Benny_the_boy' }, { username: 'Benny_the_man' }, function(err, user) {
         if (err) throw err;
 
         console.log('Nazwa uzytkownika po aktualizacji to ' + user.username);
@@ -153,4 +163,4 @@ Promise.all([kenny.save(), mark.save(), benny.save()])
     .then(findMarkAndDelete)
     .then(findKennyAndDelete)
     .then(findBennyAndRemove)
-    .catch(console.log.bind(console))
+    .catch(console.log.bind(console));
