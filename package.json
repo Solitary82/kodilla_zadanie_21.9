@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server-new.js","
+    "start": "node server-new.js"
   },
   "keywords": [],
   "author": "",
