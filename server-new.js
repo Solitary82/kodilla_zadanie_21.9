@@ -72,72 +72,8 @@ const findAllUsers = function() {
   });
 };
 
-const findSpecificRecord = function() {
-  return User.find({ username: 'Kenny_the_boy' }, function(err, res) {
-    if (err) throw err;
-    console.log('Record you are looking for is ' + res);
-  });
-};
-
-const updateUserPassword = function() {
-  return User.findOne({ username: 'Kenny_the_boy' }).then(function(user) {
-    console.log('Old password is ' + user.password);
-    console.log('Name ' + user.name);
-    user.password = 'newPassword';
-    console.log('New password is ' + user.password);
-    return user.save(function(err) {
-      if (err) throw err;
-      console.log(
-        'Uzytkownik ' + user.name + ' zostal pomyslnie zaktualizowany'
-      );
-    });
-  });
-};
-
-const updateUsername = function() {
-  return User.findOneAndUpdate(
-    { username: 'Benny_the_boy' },
-    { username: 'Benny_the_man' },
-    { new: true },
-    function(err, user) {
-      if (err) throw err;
-      console.log('Nazwa uzytkownika po aktualizacji to ' + user.username);
-    }
-  );
-};
-
-const findMarkAndDelete = function() {
-  return User.findOne({ username: 'Mark_the_boy' }).then(function(user) {
-    return user.remove(function() {
-      console.log('User successfully deleted');
-    });
-  });
-};
-
-const findKennyAndDelete = function() {
-  return User.findOne({ username: 'Kenny_the_boy' }).then(function(user) {
-    return user.remove(function() {
-      console.log('User successfully deleted');
-    });
-  });
-};
-
-const findBennyAndRemove = function() {
-  return User.findOneAndRemove({ username: 'Benny_the_man' }).then(function(
-    user
-  ) {
-    return user.remove(function() {
-      console.log('User successfully deleted');
-    });
-  });
-};
 
 Promise.all([kenny.save(), mark.save(), benny.save()])
   .then(findAllUsers)
   .then(findSpecificRecord)
-  .then(updateUserPassword)
-  .then(updateUsername)
-  .then(findMarkAndDelete)
-  .then(findKennyAndDelete)
-  .then(findBennyAndRemove)
   .catch(console.log.bind(console));
