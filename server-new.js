@@ -6,11 +6,10 @@ const mongoose = require('mongoose'),
 
 app.get('/', (req, res) => res.send('Test aplikacji wyświetlającej użytkowników. Jest to pierwsza próba hostowania aplikacji na Heroku razem z podłączoną bazą danych'));
 
-app.get('/benny', (req, res) => res.send(benny));
+app.get('/benny', (req, res) => app.get('mongodb://Solitary82:Altergothic1@ds22774.mlab.com:27740/nodeappdatabase');
 app.get('/kenny', (req, res) => res.send(kenny));
 
 app.listen(PORT, () => console.log('Example app listening on port ' + PORT));
-
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://Solitary82:Altergothic1@ds227740.mlab.com:27740/nodeappdatabase');
