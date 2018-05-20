@@ -4,7 +4,7 @@ const mongoose = require('mongoose'),
   express = require('express'),
   app = express();
 
-app.get('/', (req, res) => res.send('Test aplikacji'));
+app.get('/', (req, res) => res.send('Test aplikacji. Jest to pierwsza próba hostowania plikacji na Heroku razem z podłączoną bazą danych'));
 
 app.listen(PORT, () => console.log('Example app listening on port ' + PORT));
 
