@@ -145,5 +145,3 @@ Promise.all([kenny.save(), mark.save(), benny.save()])
   .then(findKennyAndDelete)
   .then(findBennyAndRemove)
   .catch(console.log.bind(console));
-
-process.exitCode = 1;
