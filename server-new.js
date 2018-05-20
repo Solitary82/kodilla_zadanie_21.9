@@ -1,6 +1,5 @@
 const mongoose = require('mongoose'),
   Schema = mongoose.Schema,
-  PORT = process.env.PORT || 5000,
   express = require('express'),
   app = express();
 
