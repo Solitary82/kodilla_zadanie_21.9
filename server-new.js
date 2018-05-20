@@ -6,6 +6,9 @@ const mongoose = require('mongoose'),
 
 app.get('/', (req, res) => res.send('Test aplikacji'));
 
+app.listen(PORT, () => console.log('Example app listening on port ' + PORT));
+
+
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://Solitary82:Altergothic1@ds227740.mlab.com:27740/nodeappdatabase');
 
