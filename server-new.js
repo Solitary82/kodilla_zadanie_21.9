@@ -4,7 +4,9 @@ const mongoose = require('mongoose'),
   express = require('express'),
   app = express();
 
-app.get('/', (req, res) => res.send('Test aplikacji. Jest to pierwsza próba hostowania plikacji na Heroku razem z podłączoną bazą danych'));
+app.get('/', (req, res) => res.send('Test aplikacji. Jest to pierwsza próba hostowania aplikacji na Heroku razem z podłączoną bazą danych'));
+
+app.get('/bennt', (req, res) => res.send(benny));
 
 app.listen(PORT, () => console.log('Example app listening on port ' + PORT));
 
@@ -143,3 +145,4 @@ Promise.all([kenny.save(), mark.save(), benny.save()])
   .then(findKennyAndDelete)
   .then(findBennyAndRemove)
   .catch(console.log.bind(console));
+
