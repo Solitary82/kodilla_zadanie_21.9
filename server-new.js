@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+express = require('express');
+app = express();
+
+app.get('/', (req, res) => res.send('Test aplikacji'));
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://Solitary82:Altergothic1@ds227740.mlab.com:27740/nodeappdatabase', {
@@ -67,7 +71,6 @@ mark.manify(function(err, name) {
 });
 
 const findAllUsers = function() {
-    // find all users
     return User.find({}, function(err, res) {
         if (err) throw err;
         console.log('Actual database records are ' + res);
@@ -75,7 +78,6 @@ const findAllUsers = function() {
 }
 
 const findSpecificRecord = function() {
-    // find specific record
     return User.find({ username: 'Kenny_the_boy' }, function(err, res) {
         if (err) throw err;
         console.log('Record you are looking for is ' + res);
@@ -83,7 +85,6 @@ const findSpecificRecord = function() {
 }
 
 const updadeUserPassword = function() {
-    // update user password
     return User.findOne({ username: 'Kenny_the_boy' })
         .then(function(user) {
             console.log('Old password is ' + user.password);
@@ -108,7 +109,6 @@ const updateUsername = function() {
 }
 
 const findMarkAndDelete = function() {
-    // find specific user and delete
     return User.findOne({ username: 'Mark_the_boy' })
         .then(function(user) {
             return user.remove(function() {
