@@ -1,11 +1,11 @@
 const mongoose = require('mongoose'),
   Schema = mongoose.Schema,
+  PORT = process.env.PORT || 5000,
   express = require('express'),
   app = express();
 
 app.get('/', (req, res) => res.send('Test aplikacji'));
 
-app.listen(PORT, () => console.log('Example app listening on port 3000!'));
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://Solitary82:Altergothic1@ds227740.mlab.com:27740/nodeappdatabase');
 
