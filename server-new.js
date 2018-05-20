@@ -4,7 +4,7 @@ const mongoose = require('mongoose'),
   express = require('express'),
   app = express();
 
-app.get('/', (req, res) => res.send('Hello World!'));
+app.get('/', (req, res) => res.send('Test aplikacji'));
 
 app.listen(PORT, () => console.log('Example app listening on port 3000!'));
 mongoose.Promise = global.Promise;
