@@ -4,15 +4,16 @@ const mongoose = require('mongoose'),
   express = require('express'),
   app = express();
 
-app.get('/', (req, res) => res.send('Test aplikacji. Jest to pierwsza próba hostowania aplikacji na Heroku razem z podłączoną bazą danych'));
+app.get('/', (req, res) => res.send('Test aplikacji wyświetlającej użytkowników. Jest to pierwsza próba hostowania aplikacji na Heroku razem z podłączoną bazą danych'));
 
-app.get('/bennt', (req, res) => res.send(benny));
+app.get('/benny', (req, res) => res.send(benny));
+app.get('/kenny', (req, res) => res.send(kenny));
 
 app.listen(PORT, () => console.log('Example app listening on port ' + PORT));
 
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://Solitary82:Altergothic1@ds227740.mlab.com:27740/nodeappdatabase');
+;
 
 const userSchema = new Schema({
   name: String,
